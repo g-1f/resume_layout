@@ -1,0 +1,91 @@
+% chktex-file 18
+\usepackage{titlesec}
+\thispagestyle{empty}
+\usepackage{xcolor}
+\definecolor{color}{HTML}{0E0C6A}
+\definecolor{black}{HTML}{000000}
+\definecolor{dark}{HTML}{272727}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{enumitem}
+\usepackage{eso-pic}
+\usepackage{changepage}
+\usepackage[luatex, hidelinks]{hyperref}
+\usepackage{amsmath, scalerel}
+\usepackage{tabu}
+\usepackage{fontawesome}
+\usepackage{collcell}
+\usepackage{makecell}
+\usepackage{blindtext}
+%enumitem
+\setlist[1]{labelindent=\parindent}
+\setlist[enumerate]{leftmargin=0mm, itemsep=0mm, topsep=0mm, rightmargin=1cm}
+\setlist[itemize]{itemsep=0mm, rightmargin=1cm, topsep=0mm}
+
+%customize font:
+\usepackage{fontspec}
+\usepackage{microtype}
+\setmainfont[BoldFont={Sohne-Kraftig},ItalicFont={Söhne Leicht Kursiv}]{Söhne Leicht}
+\newfontfamily\bold{Sohne-Halbfett}
+\newfontfamily{\FAFR}{FontAwesome6Free-Regular}
+\newfontfamily{\FAFS}{FontAwesome6Free-Solid}
+\newfontfamily{\FAB}{FontAwesome6Brands-Regular}
+\def\faEmail{{\FAFR\symbol{"F0E0}}} % Email
+\def\faPhone{\FAFS\symbol{"F3CD}} % Phone
+\def\faKaggle{\FAB\symbol{"F5FA}} % Kaggle
+\def\faLocation{\FAFS\symbol{"F276}} % Map Pin
+\def\faGit{\FAB\symbol{"F09B}} 
+\def\faLinkedin{\FAB\symbol{"F0E1}} 
+%---------------
+\DeclareMathOperator*{\bigcdot}{\scalerel*{\cdot}{\bigodot}}
+\newcommand{\bcdot}{\ensuremath{\bigcdot}}
+
+% Adjust margins
+\geometry{left=1.5cm, top=1cm, right=1.5cm, bottom=1.5cm}
+%-------------------------
+% Custom commands
+\newcommand{\darkbold}[1]{\textbf{\textcolor{dark}{#1}}}
+\newcommand{\bbold}[1]{\selectfont\bold{#1}}
+
+\newcommand*{\movedown}[1]{%
+  \smash{\raisebox{-3ex}{#1}}}
+\newcolumntype{q}{>{\collectcell\movedown}r<{\endcollectcell}}
+
+\newcommand{\header}[3]{
+\smallskip
+  \begin{tabular*}{\textwidth}{@{} l @{\extracolsep{\fill}} c}
+      {\fontsize{26}{26}\selectfont\bold\color{color}{#1}} & {\footnotesize\darkbold{\makecell[cr]{#2}}} 
+      \enspace{\footnotesize\color{color}\makecell[c]{#3}}\\
+      \end{tabular*}%
+\vspace{-3mm}
+}
+
+\newcommand{\tab}[4]{%
+\smallskip
+  \begin{tabularx}{\textwidth}{l @{\extracolsep{\fill}} r}
+      {\large\selectfont\bold{#1}} & \small{#2} \\
+      {{#3}} & \color{color}\textit{\footnotesize#4}
+    \end{tabularx}%
+}
+
+\newcommand{\proj}[2]{%
+\smallskip
+\begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} r}
+{\large\selectfont\bold{#1}} & \color{color}\textit{\footnotesize{#2}} 
+\end{tabular*}%
+}
+
+\newcommand{\myline}{
+  \vspace{5pt} % space above the rules
+  {\color{color}\hrule height 0.8pt}
+  \vspace{5pt} % space below the rules
+}
+
+\newcommand{\sectionname}[1]{\myline\item[]{\fontsize{13}{15}\selectfont\bold\color{color}#1}}
+
+\newenvironment{skills}{%
+  \begin{itemize}[leftmargin=0cm, rightmargin=0.5cm, topsep=0mm, itemsep=0mm, label={}, itemindent=0mm, parsep=0mm, nosep]
+}{%
+  \end{itemize}
+}
